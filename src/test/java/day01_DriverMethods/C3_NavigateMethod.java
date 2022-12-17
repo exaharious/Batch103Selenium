@@ -7,18 +7,33 @@ public class C3_NavigateMethod {
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
         //Amazon sayfasına gidelim
-        driver.navigate().to("https://amazon.com");
-        //Techproeducation sayfasına gidelim
+        //driver.navigate().to("https://amazon.com");
+        driver.get("https://amazon.com");
+
+        //techproeducation sayfasına gidelim
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        driver.navigate().to("https://techproeducation.com");
-        //Tekrar Amazon sayfasına dönelim
-        driver.navigate().back();
-        //Tekrar Hepsiburada sayfasına gidelim
-        driver.navigate().forward();
+        //driver.navigate().to("https://techproeducation.com");
+        driver.get("https://techproeducation.com");
+        //Tekrar amazon sayfasına dönelim
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        driver.navigate().back(); // Amazon sayfasına geri döner
+
+        //Tekrar techproeducation sayfasına gidelim
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        driver.navigate().forward(); // Techproya gider
+
         //Son sayfada sayfayı yenileyelim(refresh)
         try {
             Thread.sleep(3000);
@@ -27,6 +42,6 @@ public class C3_NavigateMethod {
         }
         driver.navigate().refresh();
         //Ve sayfayı kapatalım
-
+        driver.close();
     }
 }
